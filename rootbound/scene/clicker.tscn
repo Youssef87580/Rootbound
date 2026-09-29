@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkv0pew2sd2h7"]
 
-[ext_resource type="Script" uid="uid://b51vjv0d2ik3r" path="res://script/rootbound.gd" id="1_1usp6"]
+[ext_resource type="Script" uid="uid://b51vjv0d2ik3r" path="res://script/clicker.gd" id="1_1usp6"]
 
-[node name="rootbound" type="Control" node_paths=PackedStringArray("label")]
+[node name="clicker" type="Control" node_paths=PackedStringArray("label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1usp6")
 label = NodePath("Label")
+view = 1
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 80)

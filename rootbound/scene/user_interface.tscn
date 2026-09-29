@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://ccek0pmvvjht0"]
+[gd_scene load_steps=4 format=3 uid="uid://ccek0pmvvjht0"]
+
+[ext_resource type="Script" uid="uid://bhsmyuul0xou7" path="res://script/user_interface.gd" id="1_5hq2l"]
+[ext_resource type="PackedScene" uid="uid://buio5604rp2gq" path="res://scene/generator.tscn" id="2_kyk1k"]
+[ext_resource type="PackedScene" uid="uid://bkv0pew2sd2h7" path="res://scene/clicker.tscn" id="3_5hpbr"]
 
 [node name="user interface" type="Control"]
 layout_mode = 3
@@ -7,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5hq2l")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -32,17 +37,59 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/laft panel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/laft panel/VBoxContainer/navigator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/laft panel/VBoxContainer/navigator/MarginContainer"]
+layout_mode = 2
+
+[node name="clicker" type="LinkButton" parent="HBoxContainer/laft panel/VBoxContainer/navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "clicker"
+
+[node name="generator" type="LinkButton" parent="HBoxContainer/laft panel/VBoxContainer/navigator/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "generator"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/laft panel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/laft panel/VBoxContainer/MarginContainer"]
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/laft panel/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 
 [node name="resources" type="Control" parent="HBoxContainer/laft panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/laft panel/VBoxContainer/resources"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/laft panel/VBoxContainer/resources/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/laft panel/VBoxContainer/resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "blood = 16"
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -55,3 +102,16 @@ layout_mode = 2
 [node name="rest of the screen" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="generator" parent="HBoxContainer/rest of the screen" node_paths=PackedStringArray("user_interface") instance=ExtResource("2_kyk1k")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+
+[node name="rootbound" parent="HBoxContainer/rest of the screen" node_paths=PackedStringArray("user_interface") instance=ExtResource("3_5hpbr")]
+visible = false
+layout_mode = 1
+user_interface = NodePath("../../..")
+
+[connection signal="pressed" from="HBoxContainer/laft panel/VBoxContainer/navigator/MarginContainer/VBoxContainer/clicker" to="." method="_on_clicker_pressed"]
+[connection signal="pressed" from="HBoxContainer/laft panel/VBoxContainer/navigator/MarginContainer/VBoxContainer/generator" to="." method="_on_generator_pressed"]
