@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ccek0pmvvjht0"]
+
+[node name="user interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="laft panel" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/laft panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="navigator" type="Control" parent="HBoxContainer/laft panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/laft panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/laft panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="resources" type="Control" parent="HBoxContainer/laft panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="rest of the screen" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
