@@ -1,7 +1,6 @@
 class_name auto_blood
 extends Control
 
-var blood : int 
 @export var button : Button
 @export var label : Label
 @export var timer : Timer
@@ -12,12 +11,15 @@ func _ready() -> void:
 	update_label_text()
 	user_interface.naviagation.connect(on_navigation)
 
-func auto_kill() -> void:
-	blood += 1
+#temporary
+func _process(_delta: float) -> void:
 	update_label_text()
 
+func auto_kill() -> void:
+	Game.ref.data.blood += 1	
+
 func update_label_text() -> void : 
-	label.text = "blood : %s" %blood
+	label.text = "blood : %s" %Game.ref.data.blood
 
 func begin_auto_killing() -> void:
 	timer.start()
